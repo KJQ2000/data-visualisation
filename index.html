@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Visualisations | Assignment2</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <!-- Import vega-embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- custom style -->
+  <style>
+    *{
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    h1{
+      font-weight: 900;
+      text-align: center;
+    }
+    h2{
+      font-weight: 900;
+      text-align: center;
+    }
+     body{
+       background-color: #778899;
+     }
+     .page{
+       width: 850px;    
+       background-color: #F5DEB3;   
+       margin: auto;
+       padding: 50px;
+       padding-top: 35px;
+    }
+    .vis-container{
+      width: 100%;
+    }
+    .description h2, h1{
+      margin-top:0px;
+    }
+    .description-right {
+      padding-left: 20px;
+    }
+    .description-left{
+      padding-right: 20px;
+    }
+    .pure-g{
+      margin-bottom: 25px;
+    }
+    .small-font{
+        font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+ <div class="page">
+
+   <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>FIT3179 Assignment 2 - (30147573)</h1>
+      </div>
+    </div>
+  <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="description description-left">
+            <h2>The Choropleth Map</h2>
+            <div class="pure-u-1">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+            <p1> A Choropleth map is a type of thematic map which can show the quantitative data which related to country perfectly. The choropleth map above describes the total comfirmed cases of COVID-19 of each country and the range of comfirmed cases is 10 to 10000, user can move pointer to each country for checking the more detail cofirmed cases of the country.</p1>
+            <p></p>
+          </div>
+        </div>
+    </div>
+    <p></p>
+    <!-- end pure grid group -->
+    
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <h2>The Stacked Bar Chart</h2>
+            <p>The Stacked Bar Chart below shows the overall comfirmed cases around the world. From the chart below, we can that United States had an extremely high value of comfirmed cases compared to other country.</p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <h2>The Line Chart</h2>
+            <p>The Line Chart below also shows the overall COVID-19 comfirmed cases rate from February to October. User can sort with different counntries and alos select the minimum positive cases.</p>
+          </div>
+        </div>
+    </div>
+    <p></p>
+    <!-- end pure grid group -->
+    
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div id="vis5"  class="vis-container"></div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis2"  class="vis-container"></div>
+        </div>
+    </div>
+    <p></p>
+    <!-- end pure grid group -->
+    
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+    	<div class="pure-u-2-3">
+        	<div id="vis3"  class="vis-container"></div>
+      	</div>
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2>The Rule Chart</h2>
+          <p>It shows the Daily Positive of Covid-19 cases of each country and each day from January to October. The main purpose for this visualisation is to see when is the most peak moment of Covid-19 around the world.</p>
+        </div>
+      </div>
+      
+    </div>
+    <p></p>
+    <!-- end pure grid group -->
+    
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h2>The Area Graph</h2>
+            <p>This visualisation had show the death cases/ comfirmed cases of each country. From this visualisation, we can know which country had done a great job in healing people who had get infected by Covid-19.</p>
+            <p></p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+    </div>
+    <p></p>
+    <!-- end pure grid group -->
+    
+  
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualisation is created by <a href="https://github.com/kuanjunqiang" target="_blank">Kuan Jun Qiang</a>. The datasource is <a href="#"" target="_blank">some data repository online</href></p>
+      </div>
+    </div>
+  
+
+  </div> <!-- end page -->
+   
+<script type="text/javascript">
+  var specVis1 = "done1.json";
+  var specVis2 = "TotalPositiveCases.json";
+  var specVis3 = "DailyPositive.json";
+  var specVis4 = "COVID-19 Death and Comfirmed Cases per Country.json";
+  var specVis5 = "Sum of Comfirmed Cases per Country.json";
+
+  vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#vis2', specVis2, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis3', specVis3, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis4', specVis4, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  vegaEmbed('#vis5', specVis5, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+</script>
+</body>
+</html>
